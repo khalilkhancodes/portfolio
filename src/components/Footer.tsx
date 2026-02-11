@@ -1,4 +1,4 @@
-import { Github, Linkedin, Mail, Heart } from 'lucide-react';
+import { Github, Linkedin, Mail, Heart, Download } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 interface FooterProps {
@@ -60,6 +60,18 @@ export default function Footer({ year = new Date().getFullYear(), name }: Footer
               <Button size="icon" variant="ghost" asChild data-testid="footer-email">
                 <a href="mailto:contact@example.com">
                   <Mail className="h-5 w-5" />
+                </a>
+              </Button>
+              <Button
+                size="icon"
+                variant="ghost"
+                asChild
+              >
+                <a
+                  href="/Resume/resume.pdf"
+                  download="Resume_Khalil_Khan.pdf"
+                >
+                  <Download className="h-5 w-5" />
                 </a>
               </Button>
             </div>

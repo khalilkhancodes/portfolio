@@ -135,7 +135,7 @@ export default function Portfolio() {
   };
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen w-[100vw] overflow-hidden md:w-full lg:w-full">
       <Navigation sections={navigationSections} />
       
       <Hero

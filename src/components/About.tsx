@@ -41,11 +41,10 @@ export default function About({ description, highlights }: AboutProps) {
           </p>
 
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className={`transition-all duration-700 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'}`}>
+            <div className={`transition-all duration-700 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'} w-[90vw] md:w-full`}>
               <p className="text-lg leading-relaxed mb-6">
                 {description}
               </p>
-
               <div className="space-y-4">
                 {highlights.map((highlight, index) => {
                   const Icon = icons[index % icons.length];
@@ -68,18 +67,18 @@ export default function About({ description, highlights }: AboutProps) {
             <div className={`transition-all duration-700 delay-300 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'}`}>
               <div className="relative">
                 <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-chart-2/20 rounded-lg blur-xl" />
-                <div className="relative bg-card border border-border rounded-lg p-8 font-mono text-sm">
-                  <div className="flex gap-2 mb-4">
+                <div className="relative bg-card border border-border rounded-lg font-mono text-sm p-8">
+                  <div className="flex gap-2 mb-8">
                     <div className="w-3 h-3 rounded-full bg-destructive" />
                     <div className="w-3 h-3 rounded-full bg-chart-4" />
                     <div className="w-3 h-3 rounded-full bg-chart-2" />
                   </div>
-                  <pre className="text-muted-foreground">
+                  <pre className="text-muted-foreground text-wrap break-words">
                     <code>{`const developer = {
   name: "Khalil Khan",
   role: "Fullstack Developer",
   learning: "New frameworks",
-  passion: "Building ideas into reality",
+  passion: "Bringing ideas -> reality",
   goal: "Keep improving with every build"
 };`}</code>
                   </pre>

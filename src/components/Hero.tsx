@@ -45,7 +45,7 @@ export default function Hero({
     >
       {backgroundImage && (
         <div
-          className="absolute inset-0 hidden md:block lg:block"
+          className="absolute inset-0 md:block lg:block"
           style={{
             backgroundImage: `url(${backgroundImage})`,
             backgroundSize: "cover",
