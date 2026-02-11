@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
-import '@/components/examples/Hero'
-import { Github, Linkedin, Mail } from 'lucide-react';
+import { Github, Linkedin, Mail,FileUser } from 'lucide-react';
+import { styled } from '@mui/material/styles';
+import Tooltip, { TooltipProps, tooltipClasses } from '@mui/material/Tooltip';
 
 interface HeroProps {
   name: string;
@@ -11,6 +12,17 @@ interface HeroProps {
   onProjectsClick?: () => void;
   onContactClick?: () => void;
 }
+
+const LightTooltip = styled(({ className, ...props }: TooltipProps) => (
+  <Tooltip {...props} classes={{ popper: className }} />
+))(({ theme }) => ({
+  [`& .${tooltipClasses.tooltip}`]: {
+    backgroundColor: theme.palette.common.white,
+    color: 'rgba(0, 0, 0, 0.87)',
+    boxShadow: theme.shadows[1],
+    fontSize: 11,
+  },
+}));
 
 export default function Hero({ name, title, subtitle, backgroundImage, onProjectsClick, onContactClick }: HeroProps) {
   const [isVisible, setIsVisible] = useState(false);
@@ -75,21 +87,34 @@ export default function Hero({ name, title, subtitle, backgroundImage, onProject
           </div>
 
           <div className={`flex gap-4 transition-all duration-700 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <LightTooltip title="GitHub" placement="bottom">
             <Button size="icon" variant="ghost" asChild data-testid="link-github">
               <a href="https://github.com/khalilkhancodes" target="_blank" rel="noopener noreferrer">
                 <Github className="h-5 w-5" />
               </a>
             </Button>
+            </LightTooltip>
+            <LightTooltip title="LinkedIn" placement="bottom">
             <Button size="icon" variant="ghost" asChild data-testid="link-linkedin">
               <a href="www.linkedin.com/in/khalil-khan-07314b359" target="_blank" rel="noopener noreferrer">
                 <Linkedin className="h-5 w-5" />
               </a>
             </Button>
+            </LightTooltip>
+            <LightTooltip title="Email" placement="bottom">
             <Button size="icon" variant="ghost" asChild data-testid="link-email">
               <a href="mailto:khlilkhn911@gmail.com">
                 <Mail className="h-5 w-5" />
               </a>
             </Button>
+            </LightTooltip>
+            <LightTooltip title="Download Resume" placement="bottom">
+            <Button size="icon" variant="ghost" asChild data-testid="link-email">
+              <a href="/public/Resume/Khalil_Khan_Resume.pdf" download="Resume_Khalil_Khan.pdf">
+                <FileUser className="h-5 w-5" />
+              </a>
+            </Button>
+            </LightTooltip>
           </div>
         </div>
       </div>
