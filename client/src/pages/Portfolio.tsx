@@ -79,51 +79,53 @@ export default function Portfolio() {
 
   const projects = [
     {
-      title: "E-Commerce Platform",
+      title: "PizelBorne E-commerce Platform",
       description: "A fully responsive online store with shopping cart, product filters, and checkout system.",
       image: project1,
       technologies: ["React", "Tailwind", "JavaScript"],
-      githubUrl: "https://github.com",
-      liveUrl: "https://example.com"
+      githubUrl: "https://github.com/khalilkhancodes/PixelBorne",
+      liveUrl: "https://pixelborne.vercel.app/"
     },
     {
       title: "Task Management App",
       description: "Productivity app with drag-and-drop functionality, task categories, and due date tracking.",
       image: project2,
       technologies: ["React", "CSS", "Tailwind" , "Local Storage"],
-      githubUrl: "https://github.com"
+      githubUrl: "https://github.com/khalilkhancodes/Keep-Notes-App",
+      liveUrl: "https://notes-taking-app-green.vercel.app/"
     },
     {
       title: "Portfolio Website",
       description: "Modern portfolio template with smooth animations and responsive design.",
       image: project3,
       technologies: ["HTML", "Tailwind", "React"],
-      githubUrl: "https://github.com",
-      liveUrl: "https://example.com"
+      githubUrl: "https://github.com/khalilkhancodes/portfolio",
+      liveUrl: "https://portfolio-xi-sandy-71.vercel.app/"
     },
     {
       title: "Weather Dashboard",
       description: "Real-time weather application with location search and 7-day forecast.",
       image: project4,
       technologies: ["React", "API", "Tailwind"],
-      githubUrl: "https://github.com",
-      liveUrl: "https://example.com"
+      githubUrl: "https://github.com/khalilkhancodes/js-arcade/tree/main/projects/WeatherApp",
+      liveUrl: "https://js-arcade-five.vercel.app/projects/WeatherApp/index.html"
     },
     {
-      title: "Social Media Clone",
+      title: "Spotify Clone",
       description: "Instagram-inspired social platform with posts, likes, and user profiles.",
       image: project5,
       technologies: ["React", "Firebase", "CSS"],
-      githubUrl: "https://github.com"
+      githubUrl: "https://github.com/khalilkhancodes/Spotify",
+      liveUrl: "https://spotify-eight-ashen.vercel.app/"
     },
-    {
-      title: "Blog Platform",
-      description: "Full-featured blogging platform with markdown support and dark mode.",
-      image: project6,
-      technologies: ["React", "Tailwind", "Markdown"],
-      githubUrl: "https://github.com",
-      liveUrl: "https://example.com"
-    }
+    // {
+    //   title: "FastFood",
+    //   description: "Full-featured blogging platform with markdown support and dark mode.",
+    //   image: project6,
+    //   technologies: ["React", "Tailwind", "Markdown"],
+    //   githubUrl: "https://github.com/khalilkhancodes/FastFood",
+    //   liveUrl: "https://fastfood.vercel.app/"
+    // }
   ];
 
   const scrollToSection = (sectionId: string) => {
