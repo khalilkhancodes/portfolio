@@ -1,5 +1,4 @@
-import { useState, useRef } from 'react';
-import emailjs from '@emailjs/browser'; // Import EmailJS
+import { useState } from 'react';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -8,47 +7,29 @@ import { Mail, MapPin, Phone } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 
 interface ContactProps {
-  email?: string;
-  phone?: string;
-  location?: string;
+  email: string;
+  phone: string;
+  location: string;
 }
 
-export default function Contact({ 
-  email = "khlilkhn911@gmail.com", 
-  phone = "+92 329-7132915", 
-  location = "Gujranwala, Pakistan" 
-}: ContactProps) {
-  
-  const form = useRef<HTMLFormElement>(null); // Reference for EmailJS
+export default function Contact({ email, phone, location }: ContactProps) {
+  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
 
-  const sendEmail = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // PASTE YOUR ACTUAL KEYS HERE FROM 
-    const SERVICE_ID = import.meta.env.VITE_EMAIL_SERVICE_ID || "YOUR_SERVICE_ID";   
-    const TEMPLATE_ID = import.meta.env.VITE_EMAIL_TEMPLATE_ID || "YOUR_TEMPLATE_ID"; 
-    const PUBLIC_KEY = import.meta.env.VITE_EMAIL_PUBLIC_KEY || "YOUR_PUBLIC_KEY";   
-
-    emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, form.current!, PUBLIC_KEY)
-      .then(() => {
-        toast({
-          title: "Message Sent!",
-          description: "Thank you for reaching out. I'll get back to you soon.",
-        });
-        setIsSubmitting(false);
-        form.current?.reset(); // Clears the form
-      }, (error) => {
-        console.error(error);
-        toast({
-          title: "Error",
-          description: "Something went wrong. Please try again.",
-          variant: "destructive",
-        });
-        setIsSubmitting(false);
+    setTimeout(() => {
+      console.log('Form submitted:', formData);
+      toast({
+        title: "Message sent!",
+        description: "Thank you for reaching out. I'll get back to you soon.",
       });
+      setFormData({ name: '', email: '', message: '' });
+      setIsSubmitting(false);
+    }, 1000);
   };
 
   return (
@@ -62,34 +43,49 @@ export default function Contact({
         </p>
 
         <div className="max-w-5xl mx-auto grid lg:grid-cols-2 gap-12">
-          
-          {/* Form Section */}
           <div>
-            <form ref={form} onSubmit={sendEmail} className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-6">
               <div>
-                {/* name="from_name" matches your EmailJS template */}
-                <Input name="from_name" placeholder="Your Name" required />
+                <Input
+                  placeholder="Your Name"
+                  value={formData.name}
+                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  required
+                  data-testid="input-name"
+                />
               </div>
               <div>
-                {/* name="from_email" matches your EmailJS template */}
-                <Input name="from_email" type="email" placeholder="your@email.com" required />
+                <Input
+                  type="email"
+                  placeholder="your@email.com"
+                  value={formData.email}
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  required
+                  data-testid="input-email"
+                />
               </div>
               <div>
-                {/* name="message" matches your EmailJS template */}
-                <Textarea name="message" placeholder="Your Message" rows={6} required />
+                <Textarea
+                  placeholder="Your Message"
+                  rows={6}
+                  value={formData.message}
+                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                  required
+                  data-testid="input-message"
+                />
               </div>
               <Button 
                 type="submit" 
                 size="lg" 
                 className="w-full" 
                 disabled={isSubmitting}
+                data-testid="button-submit"
               >
                 {isSubmitting ? 'Sending...' : 'Send Message'}
               </Button>
             </form>
           </div>
 
-          {/* Contact Details Section */}
           <div className="space-y-4">
             <Card className="p-4 hover-elevate">
               <div className="flex items-start gap-4">
@@ -127,7 +123,6 @@ export default function Contact({
               </div>
             </Card>
           </div>
-
         </div>
       </div>
     </section>
