@@ -10,11 +10,11 @@ import ScrollNavigation from '@/components/ScrollNavigation';
 
 import heroImage from '/images/professional_develop_b432f133.jpg';
 import project1 from '/images/project1.png';
-import project2 from '/images/Task_Management.webp';
+import project2 from '/images/Task_Management.png';
 import project3 from '/images/portfolio_image.png';
 import project4 from '/images/weather_Dashboard.png';
 import project5 from '/images/social_clone.png';
-import project6 from '/images/Blog.webp';
+import project6 from '/images/HealthMate_AI.png';
 
 export default function Portfolio() {
   const navigationSections = [
@@ -79,7 +79,15 @@ export default function Portfolio() {
 
   const projects = [
     {
-      title: "PizelBorne E-commerce Platform",
+      title: "HealthMate AI",
+        description: "A mobile application that provides health insights and recommendations based on user input.",
+        image: project6,
+      technologies: ["ReactNative", "Expo", "Tailwind"],
+      // githubUrl: "https://github.com/khalilkhancodes/HealthMate-AI",
+      liveUrl: "https://www.healthmateai.me/"
+    },
+    {
+      title: "PixelBorne E-commerce Platform",
       description: "A fully responsive online store with shopping cart, product filters, and checkout system.",
       image: project1,
       technologies: ["React", "Tailwind", "JavaScript"],
@@ -117,15 +125,7 @@ export default function Portfolio() {
       technologies: ["React", "Firebase", "CSS"],
       githubUrl: "https://github.com/khalilkhancodes/Spotify",
       liveUrl: "https://spotify-eight-ashen.vercel.app/"
-    },
-    // {
-    //   title: "FastFood",
-    //   description: "Full-featured blogging platform with markdown support and dark mode.",
-    //   image: project6,
-    //   technologies: ["React", "Tailwind", "Markdown"],
-    //   githubUrl: "https://github.com/khalilkhancodes/FastFood",
-    //   liveUrl: "https://fastfood.vercel.app/"
-    // }
+    }
   ];
 
   const scrollToSection = (sectionId: string) => {

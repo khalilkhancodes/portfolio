@@ -30,14 +30,14 @@ export default function About({ description, highlights }: AboutProps) {
   const icons = [Code2, Rocket, Brain];
 
   return (
-    <section id="about" className="py-16 md:py-24 bg-card/30" ref={sectionRef}>
+    <section id="about" className="py-16 md:py-24 bg-card/30 overflow-clip" ref={sectionRef}>
       <div className="container mx-auto px-6 md:px-8">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-4xl md:text-5xl font-bold mb-4 text-center">
             About <span className="text-primary">Me</span>
           </h2>
           <p className="text-muted-foreground text-center mb-12 max-w-2xl mx-auto">
-            Passionate Full-Stack Developer based in Pakistan, building web applications that solve real-world problems.
+            Passionate IT student and developer on a journey to master full-stack development
           </p>
 
           <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -77,10 +77,10 @@ export default function About({ description, highlights }: AboutProps) {
                   <pre className="text-muted-foreground">
                     <code>{`const developer = {
   name: "Khalil Khan",
-  role: "Fullstack Developer",
-  learning: "New frameworks",
-  passion: "Building ideas into reality",
-  goal: "Keep improving with every build"
+  role: "Full Stack Developer",
+  learning: "New Frameworks",
+  passion: "Building great UIs",
+  goal: "Full-Stack Mastery"
 };`}</code>
                   </pre>
                 </div>

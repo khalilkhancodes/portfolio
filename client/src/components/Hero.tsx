@@ -23,7 +23,7 @@ export default function Hero({ name, title, subtitle, backgroundImage, onProject
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {backgroundImage && (
         <div 
-          className="absolute inset-0 hidden md:block lg:block"
+          className="absolute inset-0 md:block lg:block"
           style={{
             backgroundImage: `url(${backgroundImage})`,
             backgroundSize: 'cover',
