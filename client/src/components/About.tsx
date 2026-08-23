@@ -68,18 +68,18 @@ export default function About({ description, highlights }: AboutProps) {
             <div className={`transition-all duration-700 delay-300 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'}`}>
               <div className="relative">
                 <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-chart-2/20 rounded-lg blur-xl" />
-                <div className="relative bg-card border border-border rounded-lg p-8 font-mono text-sm">
+                <div className="relative bg-card border border-border rounded-lg p-4 md:p-8 font-mono text-xs md:text-sm">
                   <div className="flex gap-2 mb-4">
                     <div className="w-3 h-3 rounded-full bg-destructive" />
                     <div className="w-3 h-3 rounded-full bg-chart-4" />
                     <div className="w-3 h-3 rounded-full bg-chart-2" />
                   </div>
-                  <pre className="text-muted-foreground">
+                  <pre className="text-muted-foreground overflow-x-auto">
                     <code>{`const developer = {
   name: "Khalil Khan",
   role: "Full Stack Developer",
   learning: "New Frameworks",
-  passion: "Building great UIs",
+  passion: "Building Functionality",
   goal: "Full-Stack Mastery"
 };`}</code>
                   </pre>
