@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Check } from 'lucide-react';
 
 interface NavigationProps {
   sections: { id: string; label: string }[];
@@ -8,8 +8,9 @@ interface NavigationProps {
 
 export default function Navigation({ sections }: NavigationProps) {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
+  const menuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -52,16 +53,28 @@ export default function Navigation({ sections }: NavigationProps) {
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
       setActiveSection(sectionId);
-      setIsMobileMenuOpen(false);
+      setIsMenuOpen(false);
     }
   };
+
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
+        setIsMenuOpen(false);
+      }
+    };
+    if (isMenuOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [isMenuOpen]);
 
   return (
     <>
       <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-background/80 backdrop-blur-md border-b border-border' : ''}`}>
         <div className="container mx-auto px-6 md:px-8">
           <div className="flex items-center justify-between h-16">
-            <button 
+            <button
               onClick={() => scrollToSection('home')}
               className="font-mono text-lg font-semibold hover-elevate active-elevate-2 px-2 py-1 rounded-md"
               data-testid="button-home"
@@ -69,50 +82,47 @@ export default function Navigation({ sections }: NavigationProps) {
               {'< khlilkhncodes >'}
             </button>
 
-            <div className="hidden md:flex items-center gap-1">
-              {sections.map((section) => (
-                <Button
-                  key={section.id}
-                  variant="ghost"
-                  onClick={() => scrollToSection(section.id)}
-                  className={activeSection === section.id ? 'bg-accent' : ''}
-                  data-testid={`nav-${section.id}`}
-                >
-                  {section.label}
-                </Button>
-              ))}
-            </div>
-
-            <Button
-              size="icon"
-              variant="ghost"
-              className="md:hidden"
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              data-testid="button-mobile-menu"
+            <div
+              className="relative"
+              ref={menuRef}
+              onMouseEnter={() => setIsMenuOpen(true)}
+              onMouseLeave={() => setIsMenuOpen(false)}
             >
-              {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-            </Button>
+              <Button
+                size="icon"
+                variant="ghost"
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                data-testid="button-menu"
+              >
+                {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+              </Button>
+
+              <div className="h-2 w-full" />
+
+              <div
+                className={`absolute right-0 top-full w-56 bg-background border border-border rounded-lg shadow-lg py-2 z-50 transition-all duration-200 origin-top-right ${
+                  isMenuOpen
+                    ? 'opacity-100 translate-y-0 scale-100 pointer-events-auto'
+                    : 'opacity-0 -translate-y-2 scale-95 pointer-events-none'
+                }`}
+              >
+                {sections.map((section) => (
+                  <button
+                    key={section.id}
+                    onClick={() => scrollToSection(section.id)}
+                    className="w-full text-left px-4 py-2.5 mx-1 text-sm text-foreground rounded-md transition-all duration-150 hover:px-6 flex items-center justify-between"
+                    data-testid={`nav-${section.id}`}
+                  >
+                    <span>{section.label}</span>
+                    {activeSection === section.id && <Check className="h-4 w-4 text-primary shrink-0" />}
+                  </button>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </nav>
 
-      {isMobileMenuOpen && (
-        <div className="fixed inset-0 z-40 md:hidden bg-background/95 backdrop-blur-md pt-20 px-6">
-          <div className="flex flex-col gap-2">
-            {sections.map((section) => (
-              <Button
-                key={section.id}
-                variant="ghost"
-                onClick={() => scrollToSection(section.id)}
-                className={`justify-start text-lg ${activeSection === section.id ? 'bg-accent' : ''}`}
-                data-testid={`mobile-nav-${section.id}`}
-              >
-                {section.label}
-              </Button>
-            ))}
-          </div>
-        </div>
-      )}
     </>
   );
 }
