@@ -16,36 +16,38 @@ export default function Footer({ year = new Date().getFullYear(), name }: Footer
   ];
 
   return (
-    <footer className="bg-card border-t border-border py-12">
+    <footer className="border-t border-white/10 py-12">
       <div className="container mx-auto px-6 md:px-8">
         <div className="grid md:grid-cols-3 gap-8 mb-8">
           <div>
-            <h3 className="font-mono text-xl font-semibold mb-4">{'<khlilkhncodes/>'}</h3>
-            <p className="text-muted-foreground text-sm">
+            <h3 className="font-mono text-xl font-semibold mb-4 text-white">{'<khlilkhncodes/>'}</h3>
+            <p className="text-white/40 text-sm">
               Fullstack developer passionate about creating beautiful and functional web experiences.
             </p>
           </div>
 
           <div>
-            <h3 className="font-semibold mb-4">Quick Links</h3>
+            <h3 className="font-semibold mb-4 text-white">Quick Links</h3>
             <ul className="space-y-2">
               {quickLinks.map((link) => (
                 <li key={link.href}>
                   <a
                     href={link.href}
-                    className="text-muted-foreground hover:text-primary transition-colors text-sm"
+                    className="text-white/40 hover:text-white transition-colors text-sm"
                     data-testid={`footer-link-${link.label.toLowerCase()}`}
                   >
                     {link.label}
                   </a>
                 </li>
               ))}
-              <a className='text-muted-foreground hover:text-primary transition-colors text-sm' href="D:\Websites\Website Projects\Portflio Extraction\PersonTracker\attached_assets\Resume\Khalil_Khan_resume.pdf" download={'KhalilKhan_Resume'}>Resume</a>
+              <li>
+                <a className="text-white/40 hover:text-white transition-colors text-sm" href="D:\Websites\Website Projects\Portflio Extraction\PersonTracker\attached_assets\Resume\Khalil_Khan_resume.pdf" download={'KhalilKhan_Resume'}>Resume</a>
+              </li>
             </ul>
           </div>
 
           <div>
-            <h3 className="font-semibold mb-4">Connect</h3>
+            <h3 className="font-semibold mb-4 text-white">Connect</h3>
             <div className="flex gap-2">
               <Button size="icon" variant="ghost" asChild data-testid="footer-github">
                 <a href="https://github.com/khalilkhancodes" target="_blank" rel="noopener noreferrer">
@@ -66,12 +68,12 @@ export default function Footer({ year = new Date().getFullYear(), name }: Footer
           </div>
         </div>
 
-        <div className="border-t border-border pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-muted-foreground text-sm">
+        <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-white/40 text-sm">
             © {year} {name}. All rights reserved.
           </p>
-          <p className="text-muted-foreground text-sm flex items-center gap-1">
-            Made with <Heart className="h-4 w-4 text-destructive fill-destructive" /> and lots of code
+          <p className="text-white/40 text-sm flex items-center gap-1">
+            Made with <Heart className="h-4 w-4 text-white fill-white" /> and lots of code
           </p>
         </div>
       </div>

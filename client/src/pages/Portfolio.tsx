@@ -10,7 +10,7 @@ import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 import ScrollNavigation from '@/components/ScrollNavigation';
 
-import heroImage from '/images/professional_develop_b432f133.jpg';
+import heroImage from '/images/Hero.png';
 import healthMateImg from '/images/HealthMate_AI.png';
 import pixelBorneImg from '/images/Project 1.png';
 import restaurantImg from '/images/Restaurant.png';

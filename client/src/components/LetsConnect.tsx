@@ -37,15 +37,13 @@ function ConnectCard({ item, index }: { item: typeof collaborators[number]; inde
   return (
     <Card
       ref={cardRef}
-      className={`p-5 hover-elevate active-elevate-2 transition-all duration-500 ${
-        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+      className={`p-5 transition-opacity duration-500 hover:border-white/20 ${
+        isVisible ? 'opacity-100' : 'opacity-0'
       }`}
     >
       <div className="flex items-center gap-4">
-        <div className="p-3 rounded-lg bg-primary/10 shrink-0">
-          <Icon className="h-5 w-5 text-primary" />
-        </div>
-        <p className="font-medium">{item.label}</p>
+        <Icon className="h-5 w-5 text-white/40 shrink-0" />
+        <p className="font-medium text-white/80">{item.label}</p>
       </div>
     </Card>
   );
@@ -76,12 +74,10 @@ export default function LetsConnect() {
     <section id="lets-connect" className="py-16 md:py-24" ref={sectionRef}>
       <div className="container mx-auto px-6 md:px-8">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-center">
-            Let's <span className="text-primary">Connect</span>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">
+            Let's Connect
           </h2>
-          <p className="text-muted-foreground text-center mb-12 max-w-2xl mx-auto">
-            I'm interested in collaborating with:
-          </p>
+          <div className="w-12 h-px bg-white/20 mb-12" />
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-10">
             {collaborators.map((item, index) => (
@@ -89,8 +85,8 @@ export default function LetsConnect() {
             ))}
           </div>
 
-          <div className={`text-center transition-all duration-700 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-            <p className="text-lg text-muted-foreground">
+          <div className={`text-center transition-opacity duration-700 delay-500 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+            <p className="text-lg text-white/50">
               If you have an idea that needs to become a real product, feel free to reach out.
             </p>
           </div>

@@ -71,12 +71,12 @@ export default function Navigation({ sections }: NavigationProps) {
 
   return (
     <>
-      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-background/80 backdrop-blur-md border-b border-border' : ''}`}>
+      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-black/90 border-b border-white/10' : ''}`}>
         <div className="container mx-auto px-6 md:px-8">
           <div className="flex items-center justify-between h-16">
             <button
               onClick={() => scrollToSection('home')}
-              className="font-mono text-lg font-semibold hover-elevate active-elevate-2 px-2 py-1 rounded-md"
+              className="font-mono text-lg font-semibold text-white hover:text-white/80 transition-colors px-2 py-1"
               data-testid="button-home"
             >
               {'< khlilkhncodes >'}
@@ -100,21 +100,21 @@ export default function Navigation({ sections }: NavigationProps) {
               <div className="h-2 w-full" />
 
               <div
-                className={`absolute right-0 top-full w-56 bg-background border border-border rounded-lg shadow-lg py-2 z-50 transition-all duration-200 origin-top-right ${
+                className={`absolute right-0 top-full w-56 bg-black border border-white/10 py-2 z-50 transition-all duration-200 origin-top-right ${
                   isMenuOpen
-                    ? 'opacity-100 translate-y-0 scale-100 pointer-events-auto'
-                    : 'opacity-0 -translate-y-2 scale-95 pointer-events-none'
+                    ? 'opacity-100 translate-y-0 pointer-events-auto'
+                    : 'opacity-0 -translate-y-2 pointer-events-none'
                 }`}
               >
                 {sections.map((section) => (
                   <button
                     key={section.id}
                     onClick={() => scrollToSection(section.id)}
-                    className="w-full text-left px-4 py-2.5 mx-1 text-sm text-foreground rounded-md transition-all duration-150 hover:px-6 flex items-center justify-between"
+                    className="w-full text-left px-4 py-2.5 mx-1 text-sm text-white/70 transition-colors duration-150 hover:text-white hover:bg-white/5 flex items-center justify-between"
                     data-testid={`nav-${section.id}`}
                   >
                     <span>{section.label}</span>
-                    {activeSection === section.id && <Check className="h-4 w-4 text-primary shrink-0" />}
+                    {activeSection === section.id && <Check className="h-4 w-4 text-white shrink-0" />}
                   </button>
                 ))}
               </div>

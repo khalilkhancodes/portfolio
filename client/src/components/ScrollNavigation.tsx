@@ -30,7 +30,6 @@ export default function ScrollNavigation() {
     <div className={`fixed bottom-8 right-8 z-40 flex flex-col gap-2 transition-all duration-300 ${showButtons ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'}`}>
       <Button
         size="icon"
-        className="rounded-full w-12 h-12 shadow-lg"
         onClick={scrollToTop}
         data-testid="button-scroll-up"
       >
@@ -40,7 +39,6 @@ export default function ScrollNavigation() {
         <Button
           size="icon"
           variant="secondary"
-          className="rounded-full w-12 h-12 shadow-lg"
           onClick={scrollToBottom}
           data-testid="button-scroll-down"
         >

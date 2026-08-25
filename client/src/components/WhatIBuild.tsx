@@ -39,15 +39,13 @@ function BuildCard({ item, index }: { item: typeof items[number]; index: number 
   return (
     <Card
       ref={cardRef}
-      className={`p-6 hover-elevate active-elevate-2 transition-all duration-500 ${
-        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+      className={`p-6 transition-opacity duration-500 hover:border-white/20 ${
+        isVisible ? 'opacity-100' : 'opacity-0'
       }`}
     >
       <div className="flex items-start gap-4">
-        <div className="p-3 rounded-lg bg-primary/10 shrink-0">
-          <Icon className="h-6 w-6 text-primary" />
-        </div>
-        <p className="text-sm md:text-base leading-relaxed">{item.label}</p>
+        <Icon className="h-5 w-5 text-white/40 mt-0.5 shrink-0" />
+        <p className="text-sm md:text-base leading-relaxed text-white/70">{item.label}</p>
       </div>
     </Card>
   );
@@ -55,15 +53,13 @@ function BuildCard({ item, index }: { item: typeof items[number]; index: number 
 
 export default function WhatIBuild() {
   return (
-    <section id="whatibuild" className="py-16 md:py-24 bg-card/30">
+    <section id="whatibuild" className="py-16 md:py-24">
       <div className="container mx-auto px-6 md:px-8">
         <div className="max-w-5xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-center">
-            What I <span className="text-primary">Build</span>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">
+            What I Build
           </h2>
-          <p className="text-muted-foreground text-center mb-12 max-w-2xl mx-auto">
-            I specialize in building a wide range of web and mobile products.
-          </p>
+          <div className="w-12 h-px bg-white/20 mb-12" />
 
           <div className="grid sm:grid-cols-2 gap-4 md:gap-6">
             {items.map((item, index) => (

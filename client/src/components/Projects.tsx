@@ -42,8 +42,8 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
   return (
     <Card
       ref={cardRef}
-      className={`overflow-hidden hover-elevate transition-all duration-700 ${
-        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+      className={`overflow-hidden transition-opacity duration-700 ${
+        isVisible ? 'opacity-100' : 'opacity-0'
       }`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -53,9 +53,9 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
         <img
           src={project.image}
           alt={project.title}
-          className={`w-full h-full object-cover transition-transform duration-500 ${isHovered ? 'scale-110' : 'scale-100'}`}
+          className="w-full h-full object-cover"
         />
-        <div className={`absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent transition-opacity duration-300 ${isHovered ? 'opacity-90' : 'opacity-60'}`} />
+        <div className={`absolute inset-0 bg-black/60 transition-opacity duration-300 ${isHovered ? 'opacity-100' : 'opacity-0'}`} />
         <div className={`absolute bottom-4 left-4 right-4 flex gap-2 transition-all duration-300 ${isHovered ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'}`}>
           {project.githubUrl && (
             <Button size="sm" variant="secondary" asChild data-testid="button-github">
@@ -77,8 +77,8 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
       </div>
 
       <div className="p-6">
-        <h3 className="text-xl font-bold mb-2">{project.title}</h3>
-        <p className="text-muted-foreground text-sm mb-4">{project.description}</p>
+        <h3 className="text-xl font-bold mb-2 text-white">{project.title}</h3>
+        <p className="text-white/50 text-sm mb-4">{project.description}</p>
         <div className="flex flex-wrap gap-2">
           {project.technologies.map((tech) => (
             <Badge key={tech} variant="secondary" className="font-mono text-xs">
@@ -93,14 +93,12 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
 
 export default function Projects({ projects }: ProjectsProps) {
   return (
-    <section id="projects" className="py-16 md:py-24 bg-card/30">
+    <section id="projects" className="py-16 md:py-24">
       <div className="container mx-auto px-6 md:px-8">
-        <h2 className="text-4xl md:text-5xl font-bold mb-4 text-center">
-          Featured <span className="text-primary">Projects</span>
+        <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">
+          Featured Projects
         </h2>
-        <p className="text-muted-foreground text-center mb-12 max-w-2xl mx-auto">
-          A showcase of my recent work and personal projects
-        </p>
+        <div className="w-12 h-px bg-white/20 mb-12" />
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {projects.map((project, index) => (
