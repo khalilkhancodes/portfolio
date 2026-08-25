@@ -121,7 +121,7 @@ export default function Portfolio() {
       liveUrl: 'https://www.healthmateai.me/',
     },
     {
-      title: 'PixelBorne',
+      title: 'OrigLune',
       description: 'A marketplace concept designed to connect artists with customers while supporting product management, artist profiles, marketplace workflows, and administrative operations.',
       image: pixelBorneImg,
       technologies: ['React', 'Tailwind', 'JavaScript'],
