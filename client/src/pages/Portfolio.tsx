@@ -125,7 +125,7 @@ export default function Portfolio() {
       description: 'A marketplace concept designed to connect artists with customers while supporting product management, artist profiles, marketplace workflows, and administrative operations.',
       image: pixelBorneImg,
       technologies: ['React', 'Tailwind', 'JavaScript'],
-      liveUrl: 'https://pixel-borne.vercel.app/',
+      liveUrl: 'https://www.origlune.online/',
     },
     {
       title: 'Restaurant Ordering Website',
